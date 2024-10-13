@@ -18,8 +18,12 @@ const SignMessage = () => {
     if (!ed25519.verify(signature, encodedMessage, publicKey.toBytes()))
       throw new Error("Message Signature Invalid!");
 
-    console.log(`Message Signature: ${bs58.encode(signature)}`);
-    alert(`Successfully Signed Message: ${message}`);
+    // console.log(`Message Signature: ${bs58.encode(signature)}`);
+    alert(
+      `Successfully Signed Message: ${message}\n\n` +
+        `Message Signature: ${bs58.encode(signature)}`
+    );
+    document.getElementById("message").value = null;
   };
 
   return (

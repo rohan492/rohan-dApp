@@ -7,7 +7,7 @@ import {
 } from "@solana/web3.js";
 import React from "react";
 
-const SendTokens = () => {
+const SendTokens = ({ count, setCount }) => {
   const wallet = useWallet();
   const { connection } = useConnection();
 
@@ -15,8 +15,8 @@ const SendTokens = () => {
     const to = document.getElementById("to").value;
     const amount = document.getElementById("sendAmount").value;
 
-    console.log(to);
-    console.log(amount);
+    // console.log(to);
+    // console.log(amount);
 
     const pubKey = wallet.publicKey;
     const transaction = new Transaction();
@@ -30,7 +30,10 @@ const SendTokens = () => {
     );
 
     await wallet.sendTransaction(transaction, connection);
+    setCount(count + 1);
     alert("Sent " + amount + " SOL to " + to);
+    document.getElementById("to").value = null;
+    document.getElementById("sendAmount").value = 0;
   };
 
   return (

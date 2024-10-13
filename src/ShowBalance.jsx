@@ -2,7 +2,7 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import React, { useEffect } from "react";
 
-const ShowBalance = () => {
+const ShowBalance = ({ count }) => {
   const { publicKey } = useWallet();
   const { connection } = useConnection();
 
@@ -16,7 +16,7 @@ const ShowBalance = () => {
 
   useEffect(() => {
     getUserBalance();
-  }, [publicKey]);
+  }, [publicKey, count]);
 
   return (
     publicKey && (

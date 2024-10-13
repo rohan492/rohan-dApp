@@ -27,9 +27,9 @@ const App = () => {
         <WalletModalProvider>
           <div className="w-screen flex flex-col justify-center items-center gap-12">
             <WalletMultiButton />
-            <RequestAirdrop />
-            <ShowBalance />
-            <SendTokens />
+            <RequestAirdrop count={count} setCount={setCount} />
+            <ShowBalance count={count} />
+            <SendTokens count={count} setCount={setCount} />
             <SignMessage />
           </div>
         </WalletModalProvider>
